@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Javascript(Bro code-1)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ----------------------------(Variables)----------------------------- -->
+    <div>
+      <p id="p1"></p>
+      <p id="p2"></p>
+      <p id="p3"></p>
+    </div>
+    <hr />
+    <!-- ----------------------------(Input)----------------------------- -->
+    <!-- Header tag should be Top of input form. -->
+    <h3 id="header"></h3>
+
+    <div>
+      <label>Enter Your Name</label><br />
+      <input type="text" id="myText" /><br />
+      <br />
+      <button type="button" id="myBtn">Submit</button>
+    </div>
+    <hr />
+    <!-- --------------- (Hypotenuse calc practice program)------------------- -->
+    <div>
+      <label id="mlabel">Side M:</label> <br />
+      <input type="text" id="aTextBox" /> <br />
+      <label id="nlabel">Side N:</label> <br />
+      <input type="text" id="bTextBox" /> <br />
+      <button type="button" id="btnSubmit">Submit</button> <br /><br />
+      <label id="olabel">Side O:</label> <br />
+    </div>
+    <hr />
+
+    <!-- ---------------------- (Counter Program) ------------------- -->
+
+    <div>
+      <label id="countLabel">0</label><br />
+      <div class="btnFix">
+        <button id="decreaseBtn">decrease</button>
+        <button id="resetBtn">reset</button>
+        <button id="increaseBtn">increase</button>
+      </div>
+    </div>
+    <hr />
+
+    <!-- -------------------- (Random number generator) ------------------------ -->
+    <div class="btnFix2">
+      <label id="onePass" class="fontColor">0</label><br />
+      <label id="twoPass" class="fontColor">0</label><br />
+      <label id="threePass" class="fontColor">0</label><br />
+      <button type="button" id="rollButton">Roll</button>
+    </div>
+    <hr />
+    <!-- ----------------------- (Checked Property) ---------------------------- -->
+
+    <div>
+      <label for="myCheckBox">Subscribe</label>
+      <input type="checkbox" id="myCheckBox" /><br />
+      <button id="myBtnOne">Submit</button>
+    </div>
+    <hr />
+    <div>
+      <label for="Visa">Visa</label>
+      <input type="radio" name="card" id="Visa" /><br />
+      <label for="masterCard">Master Card</label>
+      <input type="radio" name="card" id="masterCard" /><br />
+      <label for="Paypal">Paypal</label>
+      <input type="radio" name="card" id="Paypal" /><br />
+      <button id="myBtnTwo">Submit</button>
+    </div>
+    <hr />
+    <!-- ----------------------- (Switches) ---------------------------- -->
+    <div>
+      <h3>My Grade</h3>
+      <p>letter grade is: <span id="gradeLetter">__</span></p>
+    </div>
+    <hr />
+    <div>
+      <h3>MarkSheet</h3>
+      <p id="hiddenMark">Your mark is: <span>___</span> marks</p>
+      <p id="line" style="display: inline">
+        Your mark is: <span id="gradeMark">___</span>
+      </p>
+      <br /><br />
+      <button id="get">Type your marks</button>
+    </div>
+
+    <script src="learning.js"></script>
+  </body>
+</html>

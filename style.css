@@ -1,0 +1,25 @@
+#countLabel {
+  display: block;
+  text-align: center;
+  font-size: 70px;
+  color: antiquewhite;
+  background-color: #000;
+}
+
+.btnFix {
+  background: #000;
+  text-align: center;
+}
+
+.fontColor {
+  display: block;
+  text-align: center;
+  font-size: 70px;
+  background-color: #000;
+  color: antiquewhite;
+}
+
+.btnFix2 {
+  background: #000;
+  text-align: center;
+}
