@@ -445,24 +445,25 @@ document.getElementById("get").onclick = function () {
   mark = window.prompt("Your earned mark:");
   mark = Number(mark);
 
-  switch (mark) {
-    case 80:
+  switch (true) {
+    case mark >= 80:
       document.getElementById("gradeMark").innerHTML =
         mark + "marks" + "," + " " + "You did great!";
       break;
-    case 60:
+    case mark >= 60:
       document.getElementById("gradeMark").innerHTML =
         mark + "marks" + "," + " " + "You did good!";
       break;
-    case 50:
+    case mark >= 50:
       document.getElementById("gradeMark").innerHTML =
         mark + "marks" + "," + " " + "You did okay!";
       break;
-    case 33:
+    case mark >= 33:
+      console.log(mark);
       document.getElementById("gradeMark").innerHTML =
-        mark + +"marks" + "," + " " + "You passed ... barely!";
+        mark + "marks" + "," + " " + "You passed ... barely!";
       break;
-    case 0:
+    case mark >= 0:
       document.getElementById("gradeMark").innerHTML =
         mark + "marks" + "," + " " + "You failed!";
       break;
@@ -471,3 +472,111 @@ document.getElementById("get").onclick = function () {
         mark + " " + "is not a  mark!";
   }
 };
+
+//----------------------- (AND OR logical operators) ----------------------------
+//Gives us the ability to check more than one condition concurrently
+//&& AND (Both conditions must be true)
+//|| OR (Either condition can be true)
+
+let temp = 15;
+let sunny = true;
+if (temp > 0 && temp < 30 && sunny) {
+  alert("The Weather is good!");
+} else {
+  alert("The weather is bad!");
+}
+
+let tempOne = 50;
+
+if (tempOne <= 0 || tempOne >= 30) {
+  alert("The Weather is bad!");
+} else {
+  alert("The weather is good!");
+}
+
+//----------------------- (NOT logical operator) ----------------------------
+
+//!NOT logical operator
+//Typically used to reverse a condition's boolean value
+//true->false false->true
+
+let tempTwo = 15;
+
+if (!(tempTwo > 0)) {
+  alert("It's warm outside");
+} else {
+  alert("It's cold outside");
+}
+
+if (!sunny) {
+  alert("It's cloudy outside");
+} else {
+  alert("It's sunny outside");
+}
+
+//----------------------- (while loop) ----------------------------
+
+//while loop= repeat some code
+//while some condition is true potentially infinite
+
+let userNameFour = "";
+
+while (userNameFour == "" || userNameFour == null) {
+  // when empty string if check this condition is found true then again check this untill put your name,cancel to enter your name get null output. if OR condition is null then you must put name otherwise ok and cancel button again and again iteration.(Infinite loop) ok=> condition is true or cancel=>condition is true they are running in infinite amount of loop untill put your name.
+  userNameFour = window.prompt("Enter your name");
+}
+
+// while (1 == 1) {
+//   alert("Help! I am stuck in infinite loop");
+// }
+//It may cause froze the browser console.
+
+console.log("Hello", userNameFour);
+alert(`Hello ${userNameFour}`);
+
+//----------------------- (do while loop) ----------------------------
+
+//do while loop=do something,
+//then check the condition,repeat if condition is true
+let userNameFive;
+do {
+  userNameFive = window.prompt("Enter your name");
+} while (userNameFive == "");
+
+console.log("Hello", userNameFive);
+alert(`Hello ${userNameFive}`);
+
+//There is first you have to do something(Here you enter your name) then while loop check it and run the program ,if get empty string means find no input value then iteration occur untill enter your name but cancel it and output:null.
+
+//----------------------- (for loop) ----------------------------
+
+//for loop=repeat some code a certain amount of time
+
+// for (let counter = 1; counter <= 10; counter+=1) {
+//   alert(counter);
+//   return;
+// }
+
+let typeMe;
+let text = "";
+typeMe = window.prompt("Type your words");
+
+for (let i = 1; i <= 10; i++) {
+  //text += `${i} My name is ${typeMe} <br/>`;
+  text += i + "My name is" + typeMe + "<br/>"; // Print input value based on how many times iteration is occuring.
+  document.getElementById("typeMe").innerHTML = text;
+}
+const Students = ["Majed", "Karim", "Rashed"];
+
+document.getElementById("myButton").onclick = function () {
+  for (let i = 0; i < Students.length; i++) {
+    //Array loop that's why iteration used as index number
+    //text += Students[i] + "<br/>";
+    text += `${Students[i]} <br/>`;
+    document.getElementById("typeMe").innerHTML = text;
+  }
+};
+
+for (let a = 10; a > 0; a--) {
+  console.log(a);
+}
