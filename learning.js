@@ -580,3 +580,123 @@ document.getElementById("myButton").onclick = function () {
 for (let a = 10; a > 0; a--) {
   console.log(a);
 }
+
+//-------------------- (break and continue statements) ------------------------
+
+//break =breaks out of a loop entirely
+//continue=skip an iteration of a loop
+
+for (let i = 1; i <= 20; i++) {
+  if (i == 13) {
+    break;
+  }
+  document.getElementById("break").innerHTML = i;
+}
+
+for (let i = 1; i <= 20; i++) {
+  if (i == 13) {
+    continue;
+  }
+  document.getElementById("continue").innerHTML = i;
+}
+
+//-------------------- (nested loop) ------------------------
+
+//nested loop=a loop inside of another loop.
+
+for (let i = 1; i <= 3; i += 1) {
+  for (j = 1; j <= 3; j += 1) {
+    console.log(j);
+  }
+}
+
+//Three times nested loop iterate. Outer loop execute number of iteration of nested loop. nested loop itself iterate according to it's iteration times.
+//It is convention that in a nested loop (inner loop) let 'j' cause, j alphabet next comes after 'i'.
+let symbol = window.prompt("Enter a symbol to use");
+let rows = window.prompt("Enter # of rows");
+let columns = window.prompt("Enter # of columns");
+
+for (let i = 1; i <= rows; i += 1) {
+  for (j = 1; j <= columns; j += 1) {
+    //document.getElementById("myRectangular").innerHTML += j;
+    document.getElementById("myRectangle").innerHTML += symbol;
+  }
+
+  document.getElementById("myRectangle").innerHTML += "<br/>";
+}
+
+//-------------------- (functions) ------------------------
+
+//function =define code once,use it many times.
+//to perform some code,call the function name.
+
+console.log("Happy birthday to you!");
+console.log("Happy birthday dear!");
+console.log("You are ____ years old!");
+console.log("Happy birthday dear ____!");
+
+console.log("Happy birthday to you!");
+console.log("Happy birthday dear!");
+console.log("You are ____ years old!");
+console.log("Happy birthday dear ____!");
+
+happyBirthday();
+
+function happyBirthday() {
+  console.log("Happy birthday to you!");
+  console.log("Happy birthday dear!");
+  console.log("You are ____ years old!");
+  console.log("Happy birthday dear ____!");
+}
+
+// function can access to global variables and as many times you can declare function.
+let userNameSix = "Bro";
+let ageThree = 21;
+
+happyBirthday();
+happyBirthday();
+happyBirthday();
+
+function happyBirthday() {
+  console.log("Happy birthday to you!");
+  console.log("Happy birthday dear!");
+  console.log("You are", ageThree, "years old!");
+  console.log("Happy birthday dear!", userNameSix);
+}
+
+//a function call another function by send over arguments to second function receive it as parameters.It is noted parameters can be any word,alphabet but there is needed orderly to be placed.when first function in curly braces it can't recognise global variable,then you should return them as arguments to second function.
+
+startProgram();
+
+function startProgram() {
+  let userNameSix = "Bro";
+  let ageThree = 21;
+
+  happyBirthday(userNameSix, ageThree);
+}
+
+function happyBirthday(userNameSix, ageThree) {
+  console.log("Happy birthday to you!");
+  console.log("Happy birthday dear!");
+  console.log("You are", ageThree, "years old!");
+  console.log("Happy birthday dear!", userNameSix);
+}
+
+//-------------------- (return statements) ------------------------
+
+//return = returns a value back to the place where you invoked a function
+
+let area;
+let width;
+let height;
+
+width = window.prompt("Enter width");
+height = window.prompt("Enter height");
+
+area = getArea(width, height);
+console.log("the area is", area);
+
+function getArea(width, height) {
+  let result = width * height;
+  return result;
+}
