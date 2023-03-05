@@ -700,3 +700,229 @@ function getArea(width, height) {
   let result = width * height;
   return result;
 }
+
+//-------------------- (ternary operator) ------------------------
+
+// ternary operator= Shortcut for an "if/else statement" takes 3 operands.
+//1. a condition with ?
+//2.expression if True :
+//3. expression if False
+//condition?exprIfTrue:exprIfFalse
+
+let adult = checkAge(21);
+alert(adult);
+
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let mango = checkNumber(25);
+alert(mango);
+
+function checkNumber(numbers) {
+  return numbers <= 18 ? true : false;
+}
+
+checkWinner(false);
+
+function checkWinner(win) {
+  win ? alert("You win") : alert("you lose");
+}
+
+//-------------------- (var vs let) ------------------------
+
+//variable scope= where a variable is accessible;
+//let=variables are limited to block scope {};
+// var= variable are limited to a function(){};
+// global variable= is declared outside any function
+//(if global,var will change browser's window properties.It may mess with your browser window,So You should avoid it and best practice to use let keyword,and browser recognise it as global variable)
+
+for (let i = 1; i <= 3; i += 1) {
+  //console.log(i); output 1 2 3
+}
+console.log(i); // output: uncaught refereance(i is not defined because let doesn't exist out of curly braces {}.It is limited to a block scope. )
+
+for (var i = 1; i <= 5; i += 1) {
+  //console.log(i);
+}
+console.log(i); // output: 1 2 3 4 5.It also work in block scope and global scope.
+
+doSomething();
+
+function doSomething() {
+  for (var i = 1; i <= 5; i += 1) {
+    //console.log(i);
+  }
+}
+console.log(i); // i is not defined because var is limited to a function.
+
+let name = "bro code";
+var Name = "bro code"; //Both are declare and display but var changed the window properties.
+
+//-------------------- (Template literals) ------------------------
+
+//Template literals=delimited with(`) instead of double or single quotes allows embedded variables and expressions.
+
+let userNameSeven = "Bro";
+let items = 3;
+let total = 75;
+
+console.log("Hello", userNameSeven);
+console.log("You have", items, "items in your cart");
+console.log("Your total is $", total);
+
+console.log(`Hello ${userNameSeven}`);
+console.log(`You Have ${items} items in your cart`);
+console.log(`Your total is ${total}`);
+
+let textThree = `Hello ${userNameSeven}``You Have ${items} items in your cart``Your total is ${total}`;
+console.log(textThree);
+
+//-------------------- (Format Currency) ------------------------
+
+//toLocalString()=returns a string with a language sensitive representation of this number.
+//number.toLocalString(locale,{options});
+//'local'=specify that language(undefined=default set in browser)
+//'options'=object with formatting options
+
+let myNum = 123456.789;
+let myPercent = 0.5;
+//myNum = myNum.toLocaleString("hi-IN"); //Hindi
+//myNum = myNum.toLocaleString("en-US"); //US English
+//myNum = myNum.toLocaleString("de-DE"); //standard  German
+
+//myNum = myNum.toLocaleString("en-US", { style: "currency", currency: "USD" }); //US English
+//myNum = myNum.toLocaleString("hi-IN", { style: "currency", currency: "INR" }); //Hindi
+//myNum = myNum.toLocaleString("de-De", { style: "currency", currency: "EUR" }); //Standard  German
+//myNum = myPercent.toLocaleString(undefined, {style: "percent",});
+
+myNum = myNum.toLocaleString(undefined, { style: "unit", unit: "celsius" });
+
+console.log(myNum);
+
+//-------------------- (Number Guessing Game) ------------------------
+
+//You play guessing game with computer. Computer plays random number between 1-10.
+//You have to guess a number if which match with random number you can pick #.
+//Also print how many times you have tried (guesses).
+
+const answer = Math.floor(Math.random() * 10 + 1);
+
+let guesses = 0;
+
+document.getElementById("submitButton").onclick = function () {
+  let guess = document.getElementById("guessField").value;
+  guesses += 1;
+
+  if (guess == answer) {
+    alert(`${answer} is the #.It took you ${guesses}guess`);
+  } else if (guess < answer) {
+    alert("Too small!");
+  } else {
+    alert("Too large!");
+  }
+};
+
+//-------------------- (Temperature conversion program) ------------------------
+
+let temperature = 32;
+
+temperature = toFarenheit(temp);
+//temperature = toCelsius(temp);
+console.log(temp);
+
+function toCelsius(temp) {
+  return (temp - 32) * (5 / 9);
+}
+function toFarenheit(temp) {
+  return (temp * 9) / 5 + 32;
+}
+
+// ----------------- (arrays) ------------------
+
+//array=think of it as a variable that can store multiple values
+
+let fruits = ["apple", "Orange", "banana"];
+console.log(fruits); //["apple", "Orange", "banana"]
+console.log(fruits[0]); //apple
+console.log(fruits[1]); //Orange
+console.log(fruits[2]); //banana
+console.log(fruits[3]); //undefined
+
+fruits[1] = "coconut";
+console.log(fruits);
+fruits[3] = "coconut";
+console.log(fruits);
+fruits.push("lemon"); //add an element
+fruits.pop(); //remove last element
+fruits.unshift("mango"); //add an element to beginning
+fruits.shift(); //removes beginning element
+
+let length = fruits.length;
+let index = fruits.indexOf("banana"); //2 if type 'kiwi' then show -1 which means out of arrays element.
+console.log(index); // show array element's index number
+
+// ----------------- (loop through an array) ------------------
+let prices = [5, 10, 15, 20, 25];
+
+for (let i = 0; i < prices.length; i += 1) {
+  console.log(prices[i]);
+}
+// let hen = [5, 10, 15, 20, 25];
+// for (let i = hen.length - 1; i >= 0; i -= 1) {
+//   console.log(hen[i]);
+// }
+
+let hens = [10, 56, 57, 89, 60];
+
+// for(let i=hens.length-1;i>=0;i-=1){
+//     console.log(hens[i]);
+// }
+//backward iterate elements of array
+//another way to iterate for loop
+for (let hen of hens) {
+  console.log(hen);
+}
+
+// ----------------- (sort an array of strings) ------------------
+
+let fruits = ["banana", "apple", "orange"];
+fruits = fruits.sort();
+fruits = fruits.sort().reverse();
+
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+//apple,banana,orange sort alphabetically out.
+//This will be in reversely sort out
+
+// ----------------- (2D arrays) ------------------
+
+//2D array= An array of arrays
+
+let fruits = ["banana", "apple", "orange"];
+let vegetables = ["carrots", "potatoes", "onions"];
+let meats = ["eggs", "chicken", "fish"];
+
+let groceryList = [fruits, vegetables, meats];
+
+//groceryList 0=fruits;0=fruits=>0 index and banana removes.
+groceryList[0][0] = "mangoes";
+
+for (let list of groceryList) {
+  console.log(list);
+}
+//#3 types of food array is displayed
+
+for (let list of groceryList) {
+  for (let food of list) {
+    console.log(food);
+  }
+}
+// each food item is displayed
+
+// ----------------- (spread operator) ------------------
