@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fraction Calculator</title>
+  </head>
+  <body>
+    <h1>Fraction Calculator</h1>
+    <div class="tool-container-field-group">
+      <div class="tool-container-field">
+        <div class="tool-input-group tool-fraction-input-group">
+          <input
+            placeholder="Decimal Number"
+            type="number"
+            min="0"
+            id="inputNumber"
+            class="tool-input-field"
+          />
+          <label class="tool-input-label">=</label>
+          <div class="tool-fraction-output">
+            <div class="tool-fraction-output-topbottom">
+              <span id="outputNumerator">?</span>
+            </div>
+            <div class="tool-fraction-divider"></div>
+            <div class="tool-fraction-output-topbottom">
+              <span id="outputDenominator">?</span>
+            </div>
+          </div>
+          <div class="tool-input-group">
+            <button class="tool-btn tool-btn-reset">Reset</button>
+            <button class="tool-btn tool-btn-calculate">Calculate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

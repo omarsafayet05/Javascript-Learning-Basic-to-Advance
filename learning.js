@@ -926,3 +926,69 @@ for (let list of groceryList) {
 // each food item is displayed
 
 // ----------------- (spread operator) ------------------
+//spread operator=allows an iterable such as an array or string to be expanded in places where zero or more arguments are expected (unpacks the elements)
+
+let Numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(...Numbers);
+let userNameEight = "Bro Code";
+console.log(...userNameEight); // individually chahracter split up.
+
+let maximumOne = Math.max(...Numbers); // unpack element , then individually argument apply
+console.log(maximumOne);
+
+let class1 = ["Spongebob", "Patrick", "Sandy"];
+let class2 = ["Rashed", "Patru", "Sanlu"];
+
+class1.push(...class2); // we have an entire array as an element which i didn't want to do so in place of adding this class directly as an elelement let's spread it into individual arguments by using the spread operator.
+console.log(...class1);
+
+// ----------------- (rest parameters) ------------------
+
+//rest parameters=represent an indefinite number of parameters(pack//s arguments into an array)
+
+// let a = 1;
+// let b = 2;
+// let c = 3;
+// let d = 4;
+// let e = 5;
+
+// console.log(sum(a, b, c, d, e));
+
+/* function sum(a,b,c,d,e){
+return a+b+c+d+e;
+} */
+
+function sum(...numbers) {
+  let total = 0;
+  for (let number of numbers) {
+    total += number;
+  }
+  return total;
+}
+
+// ----------------- (callback) ------------------
+
+// let total=sum(2,3);
+
+// function sum(x,y){
+//   let result=x+y;
+//   return result;
+// }
+
+// ----------------- (array.forEach) ------------------
+
+//array.forEach()=executes a provided callback function once for each element.
+
+let studentsThree = ["ranu", "chaity", "marium"];
+studentsThree.forEach(capitalize); //arguments passing,don't use parenthesis cause we are not function calling.
+studentsThree.forEach(print); //arguments passing
+
+function capitalize(element, index, array) {
+  array[index] = element[0].toUpperCase() + element.substring(1); // this line will capitalize of first letter of each string
+}
+
+//console.log(studentsThree[0]);
+
+function print(element) {
+  console.log(element);
+}
