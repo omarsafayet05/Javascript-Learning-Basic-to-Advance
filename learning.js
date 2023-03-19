@@ -967,13 +967,44 @@ function sum(...numbers) {
 }
 
 // ----------------- (callback) ------------------
+//callback= a function passed as an argument to another function.
 
-// let total=sum(2,3);
+//Ensures that a function is not going to run before a task is completed.helps us develop asynchronous code.(When one function has to wait for another function) that helps us avoid errors and potential problems Ex. Wait for a file to load.
 
-// function sum(x,y){
-//   let result=x+y;
-//   return result;
-// }
+let totaL = sum(2, 3);
+displayConsole(totaL);
+displayDOM(totaL);
+
+function sum(x, y) {
+  let result = x + y;
+  return result;
+}
+
+function displayConsole(output) {
+  console.log(output);
+}
+
+function displayDOM(output) {
+  document.getElementById("myLabel").innerHTML = output;
+}
+
+//Different way callback function:
+
+sum(5, 10, displayConsole);
+sum(5, 10, displayDOM);
+
+function sum(x, y, callBack) {
+  let result = x + y;
+  callBack(result);
+}
+
+function displayConsole(output) {
+  console.log(output);
+}
+
+function displayDOM(output) {
+  document.getElementById("myLabel").innerHTML = output;
+}
 
 // ----------------- (array.forEach) ------------------
 
@@ -992,3 +1023,108 @@ function capitalize(element, index, array) {
 function print(element) {
   console.log(element);
 }
+
+// ----------------------- (array.map) --------------------------
+//array.map()=executes a provided callback function once for each array element And creates a new array
+
+let numbers = [1, 2, 3, 4, 5];
+let squares = numbers.map(square);
+let cubes = numbers.map(cube);
+
+cubes.forEach(print);
+squares.forEach(print);
+
+function square(element) {
+  return Math.pow(element, 2);
+}
+function cube(element) {
+  return Math.pow(element, 3);
+}
+function print(element) {
+  console.log(element);
+}
+
+// ----------------------- (array.filter) --------------------------
+
+//array.filter()=creates a new array with all elements that pass the test provided by a function.
+
+let ages = [18, 16, 21, 17, 19, 90];
+let adults = ages.filter(checkAge);
+
+adults.forEach(print);
+
+function checkAge(element) {
+  return element >= 18;
+}
+
+function print(element) {
+  console.log(element);
+}
+
+// ----------------------- (array.reduce) --------------------------
+
+//array.reduce()=reduces an array to a single value
+
+let pricesOne = [5, 10, 15, 20, 25];
+let totalOne = pricesOne.reduce(checkOut);
+
+console.log(`The total is:${totalOne}`);
+function checkOut(totalOne, element) {
+  return totalOne + element;
+}
+
+// ----------------------- (Sort an array of numbers) --------------------------
+
+let grades = [100, 50, 90, 60, 80, 70];
+
+grades = grades.sort(descendingSort);
+//grades=grades.sort(ascendingSort);
+
+grades.forEach(print);
+
+function descendingSort(x, y) {
+  return y - x;
+}
+function ascendingSort(x, y) {
+  return x - y;
+}
+
+function print(element) {
+  console.log(element);
+}
+
+// ----------------------- (Sort an array of numbers) --------------------------
+//Function Expression=function without a name (anonymous function) avoid polluting the global scope with names  write it,then forget about it.
+
+sayHello();
+
+function sayHello() {
+  console.log("Hello!");
+}
+
+const greeting = function () {
+  console.log("Hello Baby!");
+};
+
+greeting();
+
+let countOne = 0;
+// function increaseCount(){
+//     countOne+=1;
+//     document.getElementById('myLabelOne').innerHTML=countOne;
+// }
+// function decreaseCount(){
+//     countOne-=1;
+//     document.getElementById('myLabelOne').innerHTML=countOne;
+// }
+
+//with function expression,don't need function name just call by btn id.
+
+document.getElementById("btnOne").onclick = function () {
+  countOne += 1;
+  document.getElementById("myLabelOne").innerHTML = countOne;
+};
+document.getElementById("btnTwo").onclick = function () {
+  countOne -= 1;
+  document.getElementById("myLabelOne").innerHTML = countOne;
+};
