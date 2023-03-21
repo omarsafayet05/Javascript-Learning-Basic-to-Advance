@@ -900,7 +900,7 @@ for (let fruit of fruits) {
 //apple,banana,orange sort alphabetically out.
 //This will be in reversely sort out
 
-// ----------------- (2D arrays) ------------------
+// ------------------- (2D arrays) --------------------
 
 //2D array= An array of arrays
 
@@ -925,7 +925,7 @@ for (let list of groceryList) {
 }
 // each food item is displayed
 
-// ----------------- (spread operator) ------------------
+// ------------------- (spread operator) --------------------
 //spread operator=allows an iterable such as an array or string to be expanded in places where zero or more arguments are expected (unpacks the elements)
 
 let Numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -942,7 +942,7 @@ let class2 = ["Rashed", "Patru", "Sanlu"];
 class1.push(...class2); // we have an entire array as an element which i didn't want to do so in place of adding this class directly as an elelement let's spread it into individual arguments by using the spread operator.
 console.log(...class1);
 
-// ----------------- (rest parameters) ------------------
+// -------------------- (rest parameters) ---------------------
 
 //rest parameters=represent an indefinite number of parameters(pack//s arguments into an array)
 
@@ -966,7 +966,7 @@ function sum(...numbers) {
   return total;
 }
 
-// ----------------- (callback) ------------------
+// -------------------- (callback) ----------------------
 //callback= a function passed as an argument to another function.
 
 //Ensures that a function is not going to run before a task is completed.helps us develop asynchronous code.(When one function has to wait for another function) that helps us avoid errors and potential problems Ex. Wait for a file to load.
@@ -1007,7 +1007,6 @@ function displayDOM(output) {
 }
 
 // ----------------- (array.forEach) ------------------
-
 //array.forEach()=executes a provided callback function once for each element.
 
 let studentsThree = ["ranu", "chaity", "marium"];
@@ -1128,3 +1127,150 @@ document.getElementById("btnTwo").onclick = function () {
   countOne -= 1;
   document.getElementById("myLabelOne").innerHTML = countOne;
 };
+
+// ------------------- (arrow function expression) --------------------
+//Arrow function=compact alternative to a traditional function,=>
+
+//you do need curly braces {} if your function uses more than one statement.
+//You need parenthesis if you use more than one arguments in arrow function.
+
+const greetingOne = function (userName) {
+  console.log(`Hello ${userName}`);
+};
+
+greetingOne("Bro");
+
+const greetingTwo = (userName) => console.log(`Hello ${userName}`);
+
+greetingTwo("Safayet");
+
+const percent = (x, y) => {
+  return (x / y) * 100;
+};
+
+console.log(`${percent(37, 50)}%`);
+
+const percentOne = (x, y) => (x / y) * 100;
+
+console.log(`${percentOne(45, 67)}%`);
+
+//#########################################
+
+let gradesZero = [100, 50, 90, 60, 80, 70];
+
+gradesZero.sort(descending);
+gradesZero.forEach(print);
+
+function descending(x, y) {
+  return y - x;
+}
+
+function print(element) {
+  console.log(element);
+}
+
+//By using Function expression
+
+let gradesTwo = [200, 150, 100, 50, 20, 10];
+
+gradesTwo.sort(function (x, y) {
+  return y - x;
+});
+
+gradesTwo.forEach(function (element) {
+  console.log(element);
+});
+
+let gradesThree = [300, 250, 200, 150, 120, 100];
+
+gradesThree.sort((x, y) => y - x);
+
+gradesThree.forEach((element) => console.log(element));
+
+// ------------------- (Shuffel an array) --------------------
+
+let cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+shuffle(cards);
+//console.log(cards[0]);
+cards.forEach((card) => console.log(card));
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * array.length);
+    currentIndex -= 1;
+
+    let temp = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temp;
+  }
+}
+
+// ------------------- (Nested function) --------------------
+//Nested functions= functions inside other functions.Outer functions have access to inner functions are hidden from outside the outer function. used in closures (future video topic).
+
+let userNameNine = "Bro";
+let userInbox = 0;
+
+//login();// if login this function invokes them.
+
+displayUserName(); //These functions directly invokes without login
+displayUserInbox();
+
+function login() {
+  displayUserName();
+  displayUserInbox();
+}
+
+function displayUserName() {
+  console.log(`Welcome ${userNameNine}`);
+}
+
+function displayUserInbox() {
+  console.log(`You have ${userInbox} messages`);
+}
+
+//Or
+
+loginOne(); // There must be login then invokes both of these functions.
+
+function loginOne() {
+  displayUserName();
+  displayUserInbox();
+
+  function displayUserName() {
+    console.log(`Welcome ${userNameNine}`);
+  }
+
+  function displayUserInbox() {
+    console.log(`You have ${userInbox} messages`);
+  }
+}
+
+// ------------------- (Map) --------------------
+//Map objects that holds key-value pairs of any data type.
+
+const store = new Map([
+  ["t-shirt", 20],
+  ["jeans", 30],
+  ["socks", 10],
+  ["underware", 50],
+]);
+
+let shoppingCart = 0;
+
+shoppingCart += store.get("t-shirt");
+shoppingCart += store.get("socks");
+shoppingCart += store.get("underware");
+console.log(shoppingCart);
+
+store.set("hat", 40);
+
+store.delete("hat");
+
+console.log(store.has("hat"));
+
+console.log(store.size);
+
+store.forEach((key, value) => console.log(`${key},${value}`));
