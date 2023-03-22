@@ -1274,3 +1274,114 @@ console.log(store.has("hat"));
 console.log(store.size);
 
 store.forEach((key, value) => console.log(`${key},${value}`));
+
+// -------------------------------- (object) ----------------------------------
+
+//object=A group of properties and method properties=what an object has methods=what an object can do use(.) dot to access properties/methods.
+
+const car = {
+  model: "Mustang",
+  color: "red",
+  year: 2023,
+
+  drive: function () {
+    console.log("You drive the car");
+  },
+  brake: function () {
+    console.log("You step on the brakes");
+  },
+};
+
+console.log(car.model);
+car.brake();
+
+// -------------------------------- (this)----------------------------------
+//this=reference to a particular object.the object depends on the immediate context.
+
+const car1 = {
+  model: "Mustang",
+  color: "red",
+  year: 2023,
+
+  drive: function () {
+    console.log(`You drive the ${this.model} car`);
+  },
+};
+const car2 = {
+  model: "Corvette",
+  color: "red",
+  year: 2023,
+
+  drive: function () {
+    console.log(`You drive the ${this.model} car`);
+  },
+};
+
+car1.drive();
+car2.drive();
+
+this.userNameTen = "Kallu";
+
+console.log(this);
+// -------------------------------- (class)----------------------------------
+//class=A blueprint for creating objects define what properties and methods they have use a constructor for unique properties.
+
+class Player {
+  score = 0;
+
+  pause() {
+    console.log("you paused the game");
+  }
+  exit() {
+    console.log("you exited the game");
+  }
+}
+
+const player1 = new Player();
+const player2 = new Player();
+const player3 = new Player();
+const player4 = new Player();
+const player5 = new Player();
+
+player1.score += 1;
+player3.score += 5;
+player4.score += 2;
+player5.score += 4;
+
+console.log(player1.score);
+console.log(player2.score);
+console.log(player3.score);
+console.log(player4.score);
+console.log(player5.score);
+
+player1.pause();
+player1.exit();
+player2.exit();
+player5.pause();
+
+// -------------------------------- (class)----------------------------------
+//Constructor= a special method of a class,accepts arguments and assigns properties
+
+class Student {
+  constructor(name, age, GPA) {
+    this.name = name;
+    this.age = age;
+    this.GPA = GPA;
+  }
+
+  study() {
+    console.log(`${this.name} is studying`);
+  }
+}
+
+const student1 = new Student("Harry", 30, 3.33);
+const student2 = new Student("Basker", 35, 4.56);
+const student3 = new Student("Mania", 26, 4.2);
+
+console.log(student1.GPA);
+console.log(student2.name);
+console.log(student3.age);
+
+student1.study();
+student3.study();
+student2.study();
