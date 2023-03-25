@@ -1359,7 +1359,7 @@ player1.exit();
 player2.exit();
 player5.pause();
 
-// -------------------------------- (class)----------------------------------
+// -------------------------------- (constructor)----------------------------------
 //Constructor= a special method of a class,accepts arguments and assigns properties
 
 class Student {
@@ -1385,3 +1385,105 @@ console.log(student3.age);
 student1.study();
 student3.study();
 student2.study();
+
+// ------------------------------- (static keyword)-------------------------------
+//static keyword= belongs to the class,not the objects properties:useful for caches,fixed-configuration methods:useful for utility functions.
+
+class Car {
+  numberOfCars = 0;
+  constructor(model) {
+    this.model = model;
+    this.numberOfCars += 1;
+  }
+}
+
+const car4 = new Car("BMW");
+const car5 = new Car("Corvette");
+const car6 = new Car("Lamborgini");
+
+console.log(car4.numberOfCars);
+console.log(car5.numberOfCars);
+console.log(car6.numberOfCars);
+//Note:Each car has it's own number of cars variable.
+//each car object share the same property or method
+//we precede the method by static keyword instead of each car having their own copy the car class itself has
+// the only copy then to increment number of cars by one
+//in place of the this keyword i will use the name of the
+//class car.the car classes number of cars will be incremented
+// by one every time we call the car constructor there's a problem
+// here i'm accessing the number of car's property but no one
+//object from this class has ownership of this variable to
+//access the static property of number of cars I will use the
+//name of the class car
+
+class CarOne {
+  static numberOfCars = 0;
+  constructor(model) {
+    this.model = model;
+    CarOne.numberOfCars += 1;
+  }
+
+  startRace() {
+    console.log("3...2...1...Go!");
+  }
+}
+
+const car7 = new CarOne("BMW");
+const car8 = new CarOne("Corvette");
+const car9 = new CarOne("Lamborgini");
+const car10 = new CarOne("Ferrari");
+
+console.log(CarOne.numberOfCars);
+
+car7.startRace();
+
+Math.round();
+
+// ------------------------------- (Inheritance)-------------------------------
+
+//inheritance= a child class can inherit all the methods and properties from another class.
+
+class Animal {
+  alive = true;
+  eat() {
+    console.log(`This ${this.name} is eating`);
+  }
+  sleep() {
+    console.log(`This ${this.name} is sleeping`);
+  }
+}
+
+class Rabbit extends Animal {
+  alive = true;
+  name = "rabbit";
+
+  run() {
+    console.log(`This ${this.name} is running`);
+  }
+}
+
+class Fish extends Animal {
+  alive = true;
+  name = "fish";
+
+  swim() {
+    console.log(`This ${this.name} is swimming`);
+  }
+}
+
+class Hawk extends Animal {
+  alive = true;
+  name = "hawk";
+
+  fly() {
+    console.log(`This ${this.name} is flying`);
+  }
+}
+
+const rabbit = new Rabbit();
+const fish = new Fish();
+const hawk = new Hawk();
+
+console.log(rabbit);
+rabbit.eat();
+fish.swim();
