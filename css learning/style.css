@@ -1,0 +1,119 @@
+.parent {
+  background-color: blueviolet;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+.one {
+  position: relative;
+  top: -50px;
+  background-color: brown;
+  padding: 5px;
+}
+.two {
+  background-color: lightgreen;
+  padding: 5px;
+}
+.three {
+  background-color: burlywood;
+  padding: 5px;
+}
+
+/* # Only relative: Normally each parent,child has default position:static.If parent's position:relative and top:20px then parent div will move away from top as same as if parent default position static but child's position relative and top:-50px it will remain on the top of window (top of all parent html tags).Normally relative and static are same,difference is relative has four position sides(top,bottom,right,left),but static hasn't.  */
+
+.parent-two {
+  background-color: blueviolet;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+.four {
+  position: absolute;
+  top: 180px;
+  background-color: chocolate;
+  padding: 5px;
+}
+.five {
+  background-color: lightgreen;
+  padding: 5px;
+}
+.six {
+  background-color: burlywood;
+  padding: 5px;
+}
+
+/* # only absolute: without parent div position:relative child is positioned by top and follow it's highest parent(way back to the all html elements) by itself.that's why it's above parent-two.relative and static together work,that's why they don't cross each other.But absolute position ignore document flow.*/
+
+.parent-three {
+  position: relative;
+  background-color: blueviolet;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+.seven {
+  position: absolute;
+  top: 20px;
+  background-color: aqua;
+  padding: 5px;
+}
+.eight {
+  background-color: lightgreen;
+  padding: 5px;
+}
+.nine {
+  background-color: burlywood;
+  padding: 5px;
+}
+/* # absolute & relative: with parent div position:relative child is positioned by top and follow it's container parent.relative and static together work,that's why they don't cross each other.But absolute position ignores document flow.*/
+.parent-four {
+  position: relative;
+  background-color: blueviolet;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  height: 200vh;
+}
+.ten {
+  position: fixed;
+  top: 500px;
+  background-color: aqua;
+  padding: 5px;
+}
+.eleven {
+  background-color: lightgreen;
+  padding: 5px;
+}
+.twelve {
+  background-color: burlywood;
+  padding: 5px;
+}
+/* # relative and fixed: with parent div position:relative child is positioned by top and follow it's highest parent(entire html elements).It ignore container parent.absolute and fixed are same,difference is fixed doesn't work based on container parent which is relative.*/
+.parent-five {
+  position: relative;
+  background-color: gainsboro;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  height: 130vh;
+}
+.thirteen {
+  position: sticky;
+  top: 0px;
+  background-color: aqua;
+  padding: 5px;
+}
+.fourteen {
+  background-color: lightgreen;
+  padding: 5px;
+}
+.fifteen {
+  background-color: burlywood;
+  padding: 5px;
+}
+/* # relative and sticky: with parent div position:relative child is positioned by top and follow it's container parent.It is same as fixed but follow it's container parent and behave somewhite like relative(full div show).*/
