@@ -4,10 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="anisul.css" />
     <title>Anisul Islam & Yahoo Baba</title>
   </head>
   <body>
-    <script src="anisul.js
-    "></script>
+    <div id="bgcolor" style="height: 50px; width: 100px"></div>
+    <br />
+    <!-- --------------------------------------------------------------------- -->
+    <button onclick="getData()">Fetch Data</button><br />
+    <button onclick="getDataTwo()">Fetch Data</button>
+    <p id="display" style="width: 500px; text-align: justify"></p>
+    <p id="display_two" style="width: 500px; text-align: justify"></p>
+    <br />
+    <!-- --------------------------------------------------------------------- -->
+    <div class="container">
+      <h1>Event bubbling and capturing</h1>
+      <div class="parent" id="parent">
+        <form id="form">
+          <button type="button" id="button">Click here</button>
+        </form>
+      </div>
+    </div>
+    <br />
+    <!-- --------------------------------------------------------------------- -->
+    <div>
+      <h1>ইভেন্ট ডেলিগেশন কি?</h1>
+      <p>
+        একাধিক এলিমেন্টের জন্য
+        <span class="highlight">একটাই ইভেন্ট লিসেনার রাখা</span> এবং
+        <span class="highlight">নতুন এলিমেন্ট</span> যোগ করলেও যেন লিসেনার কাজ
+        করে।
+      </p>
+      <div class="languages">
+        <ul id="list">
+          <li>জাভাস্ক্রিপ্ট</li>
+          <li>পাইথন</li>
+          <li>জাভা</li>
+          <li>নোড জেস</li>
+          <li>টাইপস্ক্রিপ্ট</li>
+        </ul>
+        <div>
+          <button type="button" onclick="addElement()">Add element</button>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- --------------------------------------------------------------------- -->
+    <div>
+      <button type="button" id="btn">Debounce Click</button>
+    </div>
+    <script src="anisul.js"></script>
   </body>
 </html>

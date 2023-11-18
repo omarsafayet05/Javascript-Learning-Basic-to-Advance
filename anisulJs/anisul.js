@@ -196,3 +196,182 @@ var concat1 = numbers1.concat(numbers2);
 var concat2 = numbers1.concat(numbers2, numbers3);
 document.write("single concat:", concat1 + "</br>");
 document.write("multiple concat:", concat2 + "</br>");
+
+//---------------------------(callbacks)----------------------------------------
+//A callback function can be defined as a function passed into another function as a parameter.
+function greet(name, callback) {
+  document.write("Hi" + " " + name + "." + "</br>");
+  callback();
+}
+
+function callMe() {
+  var x = 50;
+  document.write((x % 6) + "</br>");
+}
+
+greet("Omar", callMe);
+
+//---------------------------(Hoisting)----------------------------------------
+// Hoisting in js is a behavior in which a function or variable can be used before declaration.In terms of var and const keyword var is hoisted, and let and const doesn't allow hoisting.
+
+test = 6;
+
+document.write(test + "</br>");
+
+var test;
+//---------------------------(closure)----------------------------------------
+// closure means inner function has accessibility to the variable of it's outer function even after the outer function has returned.
+const closure = () => {
+  let first = "I am closure";
+  const second = () => {
+    document.write(first + "</br>");
+  };
+  return second();
+};
+
+closure();
+
+//---------------------------(includes)----------------------------------------
+
+const searches = ["red", "green", "yellow", "blue"];
+
+const exists = searches.includes("green");
+let colors = (document.getElementById("bgcolor").style.backgroundColor = "red");
+document.getElementById("bgcolor").innerHTML = searches.find((search) => {
+  return search == "red" && colors;
+});
+
+const color = searches[1];
+
+document.write(exists);
+//---------------------(job interviews)----------------------------------------
+//---------------------(Web API)-----------------------------------------------
+
+const display = document.getElementById("display");
+const displayTwo = document.getElementById("display_two");
+
+function getData() {
+  fetch("http://localhost:5500/anisulJs/data.txt")
+    .then((res) => res.text())
+    .then((data) => {
+      console.log("hello 2");
+      display.innerText = data;
+    });
+  console.log("hello");
+}
+
+// ফেচ দিয়ে প্রথমে ডাটা রিকুয়েস্ট করা হয় এরপর প্রমিস রিটার্ণ করলে সেটি রেস্পন্সে অবজেক্ট আকারে আসে যেখানে বডিতে রিডেবল ডাটা স্ট্রিম থাকে। এখানেও ডাটা পাওয়া যা য় না, এখানে ডাটাকে টেক্সট,জেশনে কনভার্ট করে আবার প্রমিস রিটার্ণ করে। এবার ডাটাকে শো করার পালা। কন্সোল লগের মাধ্যমে বোঝানো হয়েছে এসিনক্রোনাস কিভাবে কাজ করে। প্রথমে ফেচের মাধ্যমে ডাটাকে রিকু পাঠাবে,সে ততক্ষণে বসে না থেকে হেলো কন্সোল করবে এরপর ফেচ থেকে রিকু হেন্ডেল করে আসা প্রমিস থেকে ২য় হেলো কন্সোল করবে। ২টি কাজ একই সাথে হবে যে রেস্পন্স আগে আসবে তাকে আগে শো করাবে।
+
+//---------------------(Web API-async)-----------------------------------------------
+
+async function getDataTwo() {
+  const res = await fetch("http://localhost:5500/anisulJs/data copy.txt");
+  const data = await res.text();
+  console.log(data);
+
+  displayTwo.innerText = data;
+}
+//async await function দিয়ে ফেচ করা হয় সরাসরি ফেচের চেয়ে একটু সুবিধাজনক।then use করা লাগে না।
+//---------------------(NaN Explained)-----------------------------------------------
+
+const result = "sumit" / 5;
+document.write(result + "<br/>");
+//NaN
+
+//Javascript হচ্চে উচ্চ পোগ্রামিং ভাষা। এটি আদার পোগ্রামিং ভাষার মতন ক্রাশ করবে না। এটি একটি রেজাল্ট দিবে আপনাকে। যে রেজাল্ট ইউজার এক্সপেক্ট করছে নাম্বার হবে কিন্তু স্ট্রিংকে নম্বর দিয়ে ভাগ করা যাচ্ছে না তাই নান আউটপুট দিয়ে থাকে।
+
+const resultTwo = NaN;
+document.write(resultTwo === resultTwo + "<br/>"); //false
+
+const resultThree = "Ghor" / 6; //NaN
+const resultFour = "Bari" / 7; //NaN
+
+document.write(resultThree === resultFour + "<br/>"); //false
+
+const resultFive = [NaN];
+const search = resultFive.includes(NaN);
+document.write(search); //true
+
+//জাভাস্ক্রিপ্টে ইকুয়্যালটি এলগরিদম শুধু দুটি নয় "==","===" আরো এলগরিদম আছে। যেমন Object.is(),samaValueZero algorithom দিয়ে মূলত NaN equilty check করে।
+//x,y============> "=="  , "===", "Object.is","sameValueZero"
+//Null,Undefined =>true,false,false,false
+//Undefined,Undefined=>true,true,true,true
+//"1,2" ,[1,2]=>true,false,false,false
+//NaN,NaN=>false,false,true,true
+
+//includes method follow samevalueZero algorithom which check the given word from array.
+
+//---------------------(Event Bubbling and capturing)-----------------------------
+
+const button = document.getElementById("button");
+const parent = document.getElementById("parent");
+const form = document.getElementById("form");
+
+button.addEventListener("click", listener, {
+  capture: true,
+});
+parent.addEventListener("click", listener, true); // প্যারামিটার দুইভাবেই দেয়া যায়। অব্জেক্ট আকারে দিলে যদি আদার অপশন দেয়া লাগে তাহলে দিতে হবে।
+form.addEventListener("click", listener, true);
+
+function listener(event) {
+  //console.log(event.target);
+  //console.log(event.currentTarget);//event.currentTarget=this they are same
+  console.log(this.tagName);
+}
+
+// ইভেন্ট প্রপাগেশন হচ্ছে বাটনে ক্লিক করা হলে কি কি ওয়েতে ট্রিগ্রার শুরু হয় এবং শেষ হয়। বাবলিং হয় নিচ থেকে উপরে অর্থাৎ চাইল্ড টু প্যারেন্ট ওয়েতে। আর ক্যাপচারিং যদি ট্রু করা হয় সব তাহলে উপর থেকে নিচে।
+// ইন্টারভিউ জবে প্রশ্ন করা হয় র‍্যান্ডমলি কিভাবে ইভেন্ট প্রপাগেশন করা হয়? যেমন ফর্ম থেকে শুরু হবে , প্যারেন্ট ডিভে শেষ হবে তাহলে শুধু ফর্মে প্যারামিটার ক্যাপচার ট্রু করে দিলেই হবে। ডিফল্টভাবে এনি ইভেন্ট ক্যাপচার ফলস থাকে।
+// প্যারামিটার দুইভাবেই দেয়া যায়। অব্জেক্ট আকারে দিলে যদি আদার অপশন দেয়া লাগে তাহলে দিতে হবে।
+//currentTarget আর target এর মধ্যে difference হলো টার্গেট শুধুমাত্র যে বাটনের সাহায্যে ট্রিগ্রার হচ্ছে সকল এলিমেন্টের জন্যে তা প্রকাশ করে, কিন্তু currentTarget যেই এলিমেন্টগুলি ট্রিগার হচ্ছে তা আলাদাভাবে প্রকাশ করে।
+//---------------------(Event deligation)--------------------------------------
+
+const list = document.getElementById("list");
+
+list.addEventListener("click", (e) => {
+  //e.target.style.backgroundColor = "yellow"; এইটির সমস্যা হলো প্যারেন্ট ইউএলের উপর সকল লিসেনার ন্যস্ত করা হলো,তাই li এর বাহিরে ক্লিক করলে প্যারেন্ট সহ চাইল্ডস কালারাইজ হবে।
+
+  if (e.target.matches("li")) {
+    if (e.target.innerText === "জাভাস্ক্রিপ্ট") {
+      e.target.style.backgroundColor = "yellow";
+    } else {
+      e.target.style.backgroundColor = "limegreen";
+    }
+  }
+});
+
+function addElement() {
+  const newElement = document.createElement("li");
+  newElement.textContent = "ডটনেট";
+  list.appendChild(newElement);
+}
+
+//  একাধিক এলিমেন্টের জন্য
+// <span class="highlight">একটাই ইভেন্ট লিসেনার রাখা</span> এবং
+// <span class="highlight">নতুন এলিমেন্ট</span> যোগ করলেও যেন লিসেনার কাজ
+// করে।
+//without applying event delegation, addNewElement  or for each element had needed to use several listner function which will be broaded working.To concise this work ,event delegation is helpful.
+
+//---------------------(Debounce)----------------------------------------------
+
+const btn = document.getElementById("btn");
+
+function debounce(fn, delay) {
+  let timeOutId;
+  return function () {
+    if (timeOutId) {
+      clearTimeout(timeOutId);
+    }
+    timeOutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+btn.addEventListener(
+  "click",
+  debounce(function () {
+    console.log("clicked");
+  }, 2000)
+);
+
+// এখানে ক্লোজার,কলব্যাক ফাংশন ইউজ হয়েছে
