@@ -375,3 +375,44 @@ btn.addEventListener(
 );
 
 // এখানে ক্লোজার,কলব্যাক ফাংশন ইউজ হয়েছে
+
+//---------------------(Object.groupBy)----------------------------------------------
+
+const languages = [
+  { title: "javascript", type: "scripting" },
+  { title: "java", type: "normal" },
+  { title: "python", type: "scripting" },
+];
+
+const scripting_languages = Object.groupBy(languages, ({ type }) => type);
+console.log(scripting_languages);
+
+//---------------------(Memoization=>JS Optimization)--------------------------------
+
+function add(x) {
+  const sum = x + 10;
+  return sum;
+}
+
+//higher order function
+const memo = (func) => {
+  let cache = {};
+  return function (x) {
+    console.log(cache);
+    if (cache[x]) {
+      console.log("cached result", cache);
+      return cache[x];
+    } else {
+      console.log("result is calculated");
+      const result = func(x);
+      cache[x] = result;
+      return result;
+    }
+  };
+};
+const calculate = memo(add);
+console.log(calculate(10));
+console.log(calculate(20));
+
+//HOF=> higher order function হচ্ছে সে ফাংশন রিসিভ করে প্যারামিটার হিসেবে/ফাংশন রিটার্ন করে/ উভয়ই কাজ একইসাথে করে থাকে, memoization এর ক্ষেত্রে এইটি ইউজ হয়ে থাকে। ক্যালকুলেট ফাংশন মূলত মেমো ফাংশনে ফাংশন রিটার্ণে ১০ প্যারামিটার পাস করেছে। যদি ক্যাশে না থাকে তাহলে মেইন ফাংশন এডে তা যোগ করে মেমোতে দেখাবে প্রথমে এরপর ক্যাশে আপডেট করবে এরপর আবার নতুন সংখ্যা যোগ করতে দিলে ক্যাশের রেজাল্ট রিটার্ণ করবে।
+//---------------------(Memoization=>JS Optimization)--------------------------------
