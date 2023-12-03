@@ -415,4 +415,50 @@ console.log(calculate(10));
 console.log(calculate(20));
 
 //HOF=> higher order function হচ্ছে সে ফাংশন রিসিভ করে প্যারামিটার হিসেবে/ফাংশন রিটার্ন করে/ উভয়ই কাজ একইসাথে করে থাকে, memoization এর ক্ষেত্রে এইটি ইউজ হয়ে থাকে। ক্যালকুলেট ফাংশন মূলত মেমো ফাংশনে ফাংশন রিটার্ণে ১০ প্যারামিটার পাস করেছে। যদি ক্যাশে না থাকে তাহলে মেইন ফাংশন এডে তা যোগ করে মেমোতে দেখাবে প্রথমে এরপর ক্যাশে আপডেট করবে এরপর আবার নতুন সংখ্যা যোগ করতে দিলে ক্যাশের রেজাল্ট রিটার্ণ করবে।
+//---------------------(Remove an HTML element)--------------------------------
+//document.getElementById("singleOne").onclick = remove();
+singleOne.onclick = remove;
+
+function remove() {
+  this.remove();
+}
+
+const texts = document.querySelectorAll(".whole");
+for (let text of texts) {
+  text.onclick = deleteSelected;
+}
+function deleteSelected() {
+  this.remove();
+}
+
+const divs = document.querySelectorAll(".all");
+
+for (let div of divs) {
+  div.onclick = deleteSelected;
+}
+
+function deleteSelected() {
+  this.remove();
+}
+
 //---------------------(Memoization=>JS Optimization)--------------------------------
+
+const memoAddition = () => {
+  let cache = {};
+  return (value) => {
+    if (value in cache) {
+      console.log("resulting from cache");
+      console.log(cache);
+      return cache[value];
+    } else {
+      console.log("calculating result");
+      let result = value + 20;
+      cache[value] = result;
+      return result;
+    }
+  };
+};
+const addition = memoAddition();
+console.log(addition(10));
+console.log(addition(20));
+console.log(addition(30));
