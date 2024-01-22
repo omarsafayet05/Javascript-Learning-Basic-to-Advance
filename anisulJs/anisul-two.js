@@ -100,3 +100,31 @@ for (let i = 0; i <= 50; i++) {
 const finish = performance.now();
 
 document.write(`Loop take ${finish - start} miliseconds`);
+//____________________________(conversion to number)_____________________________
+const number = document.querySelector("#number").valueAsNumber;
+console.log(number);
+console.log(typeof number);
+// the input value always string whatever you type on. parseInt as well as valueAsNumber both are converting any value to number type.
+//____________________________(duplicate value remove)_____________________________
+
+const array = [1, 2, 2, 3, 3, 3, 4, 5, 6, 7, 7, 8, 9, 9, 10];
+
+const uniqueArr = [...new Set(array)];
+console.log(uniqueArr);
+// duplicate value removed by new Set method and spreading unique value in a new array.
+
+//_________________________(compare two arrays by value)_____________________________
+
+const compareArr = (a, b) => {
+  return a.length == b.length && a.every((v, i) => v == b[i]);
+};
+
+console.log(compareArr([3, 4], [5, 6]));
+console.log(compareArr([1, 2], [1, 2]));
+
+//___________________________(array shuffeling)______________________________________
+
+const array_two = [3, 4, 5, 6, 2, 1, 7];
+
+const array_shuffel = array_two.sort(() => Math.random() - 0.5); // sometime positive random number show,sometime negetive random number show. Math.random by default show between 0-1 positive number, that's why -0.5 which denotes any positive float number(0-1) minus 0.5 and negetive random number sort out the array of every two values.
+console.log(array_shuffel);

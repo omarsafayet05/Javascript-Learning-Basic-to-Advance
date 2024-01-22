@@ -462,3 +462,59 @@ const addition = memoAddition();
 console.log(addition(10));
 console.log(addition(20));
 console.log(addition(30));
+//---------------------(typecaste)--------------------------------
+
+console.log([] + []); //Javascript is a high Programming language.First it cast type of empty array then converted by String constructor and result in blank output.""
+console.log([] + {}); //[object,Object]
+console.log(true + 5); //6 1+5
+console.log(false + 5); //5 0+5
+//---------------------(tagged template literal)--------------------------------
+
+function myFunction() {
+  return "Bangladesh Sonar Desh";
+}
+
+const call = myFunction`Hello `;
+document.write("<br>" + call + "<br>");
+//tagged template literal=> indeed this call myFunction and pass as arguments. but without parameter it return Bangladesh.arguments which is array like object.it is js built in method. console.log({arguments}) it results in Hello output.
+
+//---------------------(content editable)--------------------------------
+// inspect=> body tag=>contenteditable
+// inspect=> console=>document.body.contentEditable=true ENTER press
+// then you can edit browser content.
+//---------------------(string constructor)--------------------------------
+
+const bull = "constructor";
+console.log(bull[bull](2024));
+
+//console=>let b=new String("BD");=>console.dir(b);=>String()=>check prototype=>String constructor which make other value in a string,2014 like that.
+//---------------------(floating point conversion)--------------------------------
+console.log(0.1 + 0.2); // 0.300000000000004 why it is happened? in some cases,this happened because decimal base number 2 works in computer.but we know decimal base number 10 that's why computer can face a problem to calculate like that conversion in some decimal number cases.
+//---------------------(prototype--Very important)--------------------------------
+console.log("BD".__proto__.__proto__.__proto__); //null
+//console=>let b=new String("BD");=>console.dir(b)=>prototype return String then return it's master parent Object then nothing that's why return prototype is null.
+//----------------(argumets array sort without loop)--------------------------------
+
+const myFunctionOne = function () {
+  return [].slice.call(arguments).sort();
+};
+
+//In a function empty array of slice method which is called and take parameters then sort out arguments then return.
+//you can't directly arguments to sort out because it is not a function.array.slice method which is convert to array first by calling arguments then sort out.
+
+console.log(myFunctionOne(1, 5, 7, 9, 3, 2));
+//----------------(Need to understand)--------------------------------
+
+function b() {
+  console.log(`this length is ${this.length}`);
+}
+
+let abba = {
+  length: 10,
+  method: function (b) {
+    arguments[0]();
+    console.log(arguments[0]());
+  },
+};
+
+abba.method(b, 5);
