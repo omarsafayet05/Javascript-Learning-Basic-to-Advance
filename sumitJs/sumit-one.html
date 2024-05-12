@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>DOM</title>
   </head>
   <body>
     <!-- ----------------(DOM explained)------------------- -->
-    <p>DOM=Document Object Model</p>
+    <p id="para">DOM=Document Object Model</p>
     <p>Document is html page or web page structure in the file system</p>
     <p>
       head,body,div,h1,p tags are elements not text.javascript do not think as
@@ -21,6 +22,61 @@
       in the browser.object features are tree structure,subtree structure.JS can
       CRUD operation by DOM applying on any html element.
     </p>
+    <!-- ------------(Traversing DOM elements)-------------- -->
+    <h1 id="heading">To Do App</h1>
+    <h1 id="headingOne">To Do <span style="display: none">App</span></h1>
+    <h1 id="headingTwo">To Do <span style="display: none">App</span></h1>
+
+    <!-- ......................................... -->
+    <ul id="items">
+      <li class="item">Rafiq</li>
+      <li class="item">Khorsed</li>
+      <li class="item">Mannan</li>
+      <li class="item">Jafor</li>
+    </ul>
+
+    <ul>
+      <li class="item">Salam</li>
+      <li class="item">Jobber</li>
+    </ul>
+
+    <ul id="lists">
+      <li class="item">Rafiq</li>
+      <li class="item">Khorsed</li>
+      <li class="item">Mannan</li>
+      <li class="item">Jafor</li>
+    </ul>
+
+    <ul>
+      <li class="item">Salam</li>
+      <li class="item">Jobber</li>
+    </ul>
+    <!-- ......................................... -->
+    <h2 class="Query">Hello Query Selector</h2>
+    <h3 id="QueryAll">Hello Query Selector</h3>
+    <ul id="items">
+      <li class="name">Rafiq</li>
+      <li class="name">Khorsed</li>
+      <li class="name">Mannan</li>
+      <li class="name">Jafor</li>
+    </ul>
+
+    <ul>
+      <li class="name">Salam</li>
+      <li class="name">Jobber</li>
+    </ul>
+    <!-- ......................................... -->
+    <ul id="items">
+      <li class="names">Rafiq</li>
+      <li class="names">Khorsed</li>
+      <li class="names">Mannan</li>
+      <li class="names">Jafor</li>
+    </ul>
+
+    <ul>
+      <li class="names">Salam</li>
+      <li class="names">Jobber</li>
+    </ul>
     <script src="sumit-one.js"></script>
   </body>
 </html>
