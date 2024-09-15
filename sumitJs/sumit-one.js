@@ -14,7 +14,7 @@ document.title = "play with dom"; //change title
 for (let element of document.all) {
   console.log(element); //show the whole html structure by loop
 }
-
+//------------(Traversing DOM elements)--------------
 console.log(document.getElementById("#heading")); //show html elements.
 
 let heading = document.getElementById("heading");
@@ -82,3 +82,38 @@ for (let i = 0; i < li.length; i++) {
 //}
 //querySelectorAll last child means both ul lists last childs.
 //nth-child you can assign any number of child lists.it Shows all ul childs.
+
+//------------(Traversing DOM hierarchy)--------------
+
+let parent = document.querySelector("#items");
+let children = parent.children; // use children properties to display children under parent element.
+
+console.log(children);
+console.log(children[3]); //To catch 3no children.
+
+//Indirect way to access from grandparent to children uses querySelector
+let grandParent = document.querySelector(".to-do");
+let Parent = grandParent.children;
+
+console.log(Parent[1].children);
+//Decendant way to access children uses querySelectorAll.simply called is a direct way.
+let grandparent = document.querySelector(".to-do");
+let childrenOne = grandparent.querySelectorAll(".item");
+
+console.log(childrenOne);
+
+//Ascending way to access from children to grandparent uses closest.
+let childrenTwo = document.querySelector(".item");
+let grandparentOne = childrenTwo.closest(".to-do");
+
+console.log(grandparentOne);
+// How to access from children one to next sibiling
+let childrenOneSib = document.querySelector(".item");
+let childrenTwoSib = childrenOneSib.nextElementSibling;
+
+console.log(childrenTwoSib);
+// How to access from children two to previus sibiling
+let childrenTwoSibiling = document.querySelector(".item").nextElementSibling;
+let childrenOneSibiling = childrenTwoSibiling.previousElementSibling;
+
+console.log(childrenOneSibiling);
